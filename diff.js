@@ -37,12 +37,13 @@ function splitByFile( diff ) {
 			filename = line.replace( /^diff --git a\/(\S+).*$/, "$1" );
 			files[ filename ] = [];
 			oldLineNum = null;
+		} else if (line.indexOf('---') == 0 || line.indexOf('+++') == 0) {
 		} else if ( matches = line.match( /@@\ -[0-9]+(,[0-9]+)?\ \+([0-9]+)(,[0-9]+)?\ @@.*/ ) ) {
 			oldLineNum = newLineNum = matches[ 2 ];
 			files[ filename ].push({
-				line: line,
-				oldLineNum: null,
-				newLineNum: null
+				line: line.substring(line.indexOf("@@", 2)+1, line.length),
+				oldLineNum: "⋯",
+				newLineNum: "⋯"
 			});
 		} else if ( matches = line.match( /^(\[[0-9;]+m)*([\ +-])/ ) ) {
 			files[ filename ].push({
