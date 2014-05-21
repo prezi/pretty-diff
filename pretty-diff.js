@@ -60,7 +60,7 @@ var markUpDiff = function() {
 	return function( diff ) {
 		return diff.map(function( lineData ) {
 			var type = lineData.line.charAt( 0 );
-			return '<tr class="line ' + diffClasses[ type ] + '">' + lineNumTemplate( lineData.oldLineNum, lineData.newLineNum, type ) + '<td class="line-diff"><pre>' + escape( lineData.line ) + '</pre></td></tr>';
+			return '<tr class="line ' + diffClasses[ type ] + '">' + lineNumTemplate( lineData.oldLineNum, lineData.newLineNum, type ) + '<td class="line-diff"><pre>' + escape( lineData.line.substring(1) ) + '</pre></td></tr>';
 		}).join( "\n" );
 	};
 }();

@@ -37,7 +37,7 @@
 		border-spacing: 0;
 		width: 100%;
 	}
-	.line {
+	.line, pre::before {
 		font-family: Consolas, Menlo, "Bitstream Vera Sans Mono", Courier, monospace;
 		font-size: 9pt;
 	}
@@ -59,8 +59,15 @@
 		display: inline-block;
 		white-space: pre-wrap;
 	}
+	pre::before {
+		padding-right: 0.5em;
+	}
 	.file {
 		color: #aaa;
+	}
+	.delete pre::before {
+		content: "-";
+		color: #b76;
 	}
 	.delete:nth-child(even) {
 		background-color: #fee;
@@ -68,15 +75,28 @@
 	.delete:nth-child(odd) {
 		background-color: #f5e6e8;
 	}
+	.insert pre::before {
+		content: "+";
+		color: #7b6;
+	}
 	.insert:nth-child(even) {
 		background-color: #dec;
 	}
 	.insert:nth-child(odd) {
 		background-color: #d3e7c4;
-	}	
+	}
 	.info {
 		color: #a0b;
-		background-color: #fceeff;
+		background-color: #fff9ff;
+	}
+	.info .line-number {
+		font-weight: bold;
+	}
+	.info pre::before {
+		content: "@";
+	}
+	.context pre::before {
+		content: " ";
 	}
 	</style>
 </head>

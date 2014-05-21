@@ -42,8 +42,8 @@ function splitByFile( diff ) {
 			oldLineNum = newLineNum = matches[ 2 ];
 			files[ filename ].push({
 				line: line.substring(line.indexOf("@@", 2)+1, line.length),
-				oldLineNum: "⋯",
-				newLineNum: "⋯"
+				oldLineNum: "OLD",
+				newLineNum: "NEW"
 			});
 		} else if ( matches = line.match( /^(\[[0-9;]+m)*([\ +-])/ ) ) {
 			files[ filename ].push({
@@ -57,13 +57,7 @@ function splitByFile( diff ) {
 			if ( matches[ 2 ] != '+' ) {
 				oldLineNum++;
 			}
-		} else {
-			files[ filename ].push({
-				line: line,
-				oldLineNum: null,
-				newLineNum: null
-			});
-		}
+		} 
 	});
 
 	return files;
